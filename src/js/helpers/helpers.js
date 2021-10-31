@@ -14,6 +14,9 @@ export const orderByProps = (obj, order) => {
       (a, b) => order.findIndex((item) => item === a.key)
         - order.findIndex((item) => item === b.key),
     ),
-    ...result.sort((a, b) => a.key > b.key),
+    ...result.sort((a, b) => {
+      if (a.key > b.key) return 1;
+      return -1;
+    }),
   ];
 };

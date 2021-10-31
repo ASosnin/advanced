@@ -10,7 +10,6 @@ test('Проверка сортировки свойств объекта', () =
   };
   const order = ['name', 'level'];
   const result = orderByProps(obj, order);
-  console.log(result);
   const expected = [
     { key: 'name', value: 'мечник' },
     { key: 'level', value: 2 },
@@ -31,7 +30,6 @@ test('Проверка сортировки с пустым списком св�
   };
   const order = [];
   const result = orderByProps(obj, order);
-  console.log(result);
   const expected = [
     { key: 'attack', value: 80 },
     { key: 'defence', value: 40 },
