@@ -1,19 +1,16 @@
 export const orderByProps = (obj, order) => {
   const itemsIncludesOrder = [];
   const result = [];
-
+  order.forEach((item) => {
+    if (item in obj) itemsIncludesOrder.push({ key: item, value: obj[item] });
+  });
   for (const item in obj) {
-    if (order.includes(item)) {
-      itemsIncludesOrder.push({ key: item, value: obj[item] });
-    } else {
+    if (!order.includes(item)) {
       result.push({ key: item, value: obj[item] });
     }
   }
   return [
-    ...itemsIncludesOrder.sort(
-      (a, b) => order.findIndex((item) => item === a.key)
-        - order.findIndex((item) => item === b.key),
-    ),
+    ...itemsIncludesOrder,
     ...result.sort((a, b) => {
       if (a.key > b.key) return 1;
       return -1;
